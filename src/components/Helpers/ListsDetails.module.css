@@ -1,0 +1,22 @@
+.spacing {
+    padding-left: 15px;
+    padding-right: 15px;
+    display: block;
+}
+
+.addBold{
+    font-weight: bold;
+}
+
+.addMargin{
+    margin: 2px 5px 2px 5px;
+}
+
+.addSpanStyle{
+    margin: 2px 5px 2px 5px;
+    color: #41464b;
+    background-color: #c8d5b9;
+    border-color: #d3d6d8;
+    padding: 1px;
+    border-radius: 3px;
+}
