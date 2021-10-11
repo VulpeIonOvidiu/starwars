@@ -1,12 +1,15 @@
-import classes from './ItemDetails.module.css'
+import classes from './CommonModal.module.css'
 import SpanDetails from '../Helpers/SpanDetails';
 import ListsDetails from '../Helpers/ListsDetails';
 import Button from '../Helpers/Button';
 import FooterButton from '../Helpers/FooterButton';
-const ItemDetails = (props) => {
 
+//People modal - shows detail page of the person selected
+const PeopleModal = (props) => {
+
+
+    //Tried a different approach to generate the page elements, iterationg thru the keys of the object
     const [peopleItem] = props.data.people.filter(el => { return el.url === props.filterItem });
-    //console.log(props.data)
     delete peopleItem.created;
     delete peopleItem.edited;
     let contextDisplay = [];
@@ -40,4 +43,4 @@ const ItemDetails = (props) => {
     )
 }
 
-export default ItemDetails;
+export default PeopleModal;

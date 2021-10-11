@@ -1,8 +1,10 @@
-import classes from './ItemDetails.module.css'
+import classes from './CommonModal.module.css'
 import SpanDetails from '../Helpers/SpanDetails';
 import ListsDetails from '../Helpers/ListsDetails';
 import Button from '../Helpers/Button';
 import FooterButton from '../Helpers/FooterButton';
+
+//Species modal - shows detail page of the species selected
 const SpeciesModal = (props) => {
 
     const [speciesItem] = props.data.species.filter(el => { return el.url === props.filterItem });

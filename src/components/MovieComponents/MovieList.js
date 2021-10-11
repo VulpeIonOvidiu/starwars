@@ -16,18 +16,9 @@ const MovieList = () => {
     const [planets, setPlanets] = useState([]);
     const [people, setPeople] = useState([]);
     const [vehicles, setVehicles] = useState([]);
-
+    const [loadDataError, setLoadDataError] = useState(false);
     //use effect without dependencies because will need to be called only once
     useEffect(() => {
-
-        async function getMovies() {
-            await fetch('https://swapi.dev/api/films/?format=json')
-                .then(response => response.json())
-                .then(data => {
-                    setMapListMovies(data.results);
-                    setIsDataLoaded(true);
-                }).catch();
-        }
 
         const apiUrls = ["https://swapi.dev/api/people/?page=1&format=json", "https://swapi.dev/api/species/?page=1&format=json", 'https://swapi.dev/api/starships/?page=1&format=json', "https://swapi.dev/api/planets/?page=1&format=json", 'https://swapi.dev/api/vehicles/?page=1&format=json'];
         const stateFunctions = [setPeople, setSpecies, setStartships, setPlanets, setVehicles]
@@ -37,12 +28,22 @@ const MovieList = () => {
             await fetch(url)
                 .then(response => response.json())
                 .then(data => {
+
                     setState(prev => ([...prev, ...data.results]));
                     if (data.next !== null) {
                         getData(data.next, setState);
                     }
                 })
-                .catch(error => { console.log(error) });
+                .catch((err) => { setLoadDataError(true) });
+        }
+
+        async function getMovies() {
+            await fetch('https://swapi.dev/api/films/?format=json')
+                .then(response => response.json())
+                .then(data => {
+                    setMapListMovies(data.results);
+                    setIsDataLoaded(true);
+                }).catch((err) => { setLoadDataError(true) });
         }
 
         for (let i = 0; i < apiUrls.length; i++) {
@@ -64,14 +65,14 @@ const MovieList = () => {
         return el.title.toLowerCase().includes(filterSearch) || el.opening_crawl.toLowerCase().includes(filterSearch)
     });
 
-
     //return elements
     //condition added on dataLoaded to display different content based on the the filter or the data is not loaded
     return (
         <>
             <SearchOption searchElement={onSearchElement} />
             <ul className={classes.movie_list}>
-                {!dataLoaded && <h2 className={classes.movie_list__fallback}>Please wait...</h2>}
+                {loadDataError && <h2 className={classes.movie_list__fallback}>Sorry, something went wrong. <br />Please revisite webpage at another time</h2>}
+                {!dataLoaded && !loadDataError && <h2 className={classes.movie_list__fallback}>Please wait...</h2>}
                 {dataLoaded && mapListMoviesFilter.map(el => <MovieCard movieData={el} people={people} planets={planets} startships={starships} vehicles={vehicles} species={species} movies={mapListMovies} key={el.episode_id}></MovieCard>)}
                 {(dataLoaded && mapListMoviesFilter.length === 0) && <li className={classes.movie_list__fallback}>No Movies to display</li>}
             </ul>

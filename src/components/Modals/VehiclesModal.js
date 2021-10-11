@@ -1,8 +1,10 @@
-import classes from './ItemDetails.module.css'
+import classes from './CommonModal.module.css'
 import SpanDetails from '../Helpers/SpanDetails';
 import ListsDetails from '../Helpers/ListsDetails';
 import Button from '../Helpers/Button';
 import FooterButton from '../Helpers/FooterButton';
+
+//Vehicle modal - shows detail page of the vehicle selected
 const VehiclesModal = (props) => {
 
     const [vehiclesItem] = props.data.vehicles.filter(el => { return el.url === props.filterItem });

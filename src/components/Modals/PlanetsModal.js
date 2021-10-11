@@ -1,8 +1,10 @@
-import classes from './ItemDetails.module.css'
+import classes from './CommonModal.module.css'
 import SpanDetails from '../Helpers/SpanDetails';
 import ListsDetails from '../Helpers/ListsDetails';
 import Button from '../Helpers/Button';
 import FooterButton from '../Helpers/FooterButton';
+
+//Planet modal - shows detail page of the planet selected
 const PlanetsModal = (props) => {
 
     const [planetItem] = props.data.planets.filter(el => { return el.url === props.filterItem });

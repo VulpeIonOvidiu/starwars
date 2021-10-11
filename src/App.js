@@ -1,8 +1,5 @@
 import './App.css';
-import MovieList from './components/Home/MovieList';
-//import SearchOption from './components/Home/SearchOption';
-//import { Route } from 'react-router-dom';
-//import TestPage from './components/Home/TestPage';
+import MovieList from './components/MovieComponents/MovieList';
 
 function App() {
   return (

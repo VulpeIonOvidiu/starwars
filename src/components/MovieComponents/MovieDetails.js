@@ -1,7 +1,7 @@
 import classes from './MovieDetails.module.css'
 import SpanDetails from '../Helpers/SpanDetails';
 import ListsDetails from '../Helpers/ListsDetails';
-import ItemDetails from '../Modals/ItemDetails';
+import PeopleModal from '../Modals/PeopleModal';
 import PlanetsModal from '../Modals/PlanetsModal';
 import StarShipsModal from '../Modals/StarShipsModal';
 import VehiclesModal from '../Modals/VehiclesModal';
@@ -50,7 +50,7 @@ const MovieDetails = (props) => {
                 <ListsDetails title="Species" items={props.entireData.movieData.species} itemsAux={props.entireData.species} links={true} onClickItem={showItemDetailsHandler} />
                 <FooterButton><Button onClick={props.onShowModal}>Close</Button></FooterButton>
             </div >
-            {(showItemDetails && linkItem.includes('people')) && <ItemDetails onCloseModal={closeItemModalHandler} filterItem={linkItem} data={props.entireData}></ItemDetails>}
+            {(showItemDetails && linkItem.includes('people')) && <PeopleModal onCloseModal={closeItemModalHandler} filterItem={linkItem} data={props.entireData}></PeopleModal>}
             {(showItemDetails && linkItem.includes('planets')) && <PlanetsModal onCloseModal={closeItemModalHandler} filterItem={linkItem} data={props.entireData}></PlanetsModal>}
             {(showItemDetails && linkItem.includes('starships')) && <StarShipsModal onCloseModal={closeItemModalHandler} filterItem={linkItem} data={props.entireData}></StarShipsModal>}
             {(showItemDetails && linkItem.includes('vehicles')) && <VehiclesModal onCloseModal={closeItemModalHandler} filterItem={linkItem} data={props.entireData}></VehiclesModal>}

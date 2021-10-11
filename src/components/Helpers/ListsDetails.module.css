@@ -2,6 +2,7 @@
     padding-left: 15px;
     padding-right: 15px;
     display: block;
+    word-break:break-all;
 }
 
 .addBold{
