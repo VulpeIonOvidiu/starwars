@@ -3,11 +3,7 @@ import classes from './SearchOption.module.css'
 const SearchOption = (props) => {
 
     const searchElementHandler = (event) => {
-        if (event.target.value.length > 2) {
-            props.searchElement(event.target.value)
-        } else {
-            props.searchElement("")
-        }
+        props.searchElement(event.target.value)
     }
 
     return (
